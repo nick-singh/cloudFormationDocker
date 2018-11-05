@@ -1,0 +1,22 @@
+Resources:
+  AppNode:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0ac019f4fcb7cb7e6 #this image id is for us-east-1
+      KeyName: week10 # generic keypair name
+      SecurityGroups:
+        - !Ref AppNodeSG #references the AppNodeSg section
+  AppNodeSG: #security group details
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: for the app nodes that allow ssh, http and docker ports
+      SecurityGroupIngress:
+      - IpProtocol: tcp #out going traffic for http
+        FromPort: '80'
+        ToPort: '80'
+        CidrIp: 0.0.0.0/0 #out going traffic for ssh
+      - IpProtocol: tcp
+        FromPort: '22'
+        ToPort: '22'
+        CidrIp: 0.0.0.0/0
