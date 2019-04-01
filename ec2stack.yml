@@ -4,7 +4,7 @@ Resources:
     Properties:
       InstanceType: t2.micro
       ImageId: ami-0ac019f4fcb7cb7e6 #this image id is for us-east-1
-      KeyName: week10 # generic keypair name
+      KeyName: wk10 # generic keypair name
       SecurityGroups:
         - !Ref AppNodeSG #references the AppNodeSg section
   AppNodeSG: #security group details
